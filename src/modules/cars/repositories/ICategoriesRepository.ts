@@ -5,7 +5,7 @@ export interface ICreateCategoryDTORequest {
   description: string;
 }
 
-export interface ICreateCategoriesRepository {
+export interface ICategoriesRepository {
   create({ name, description }: ICreateCategoryDTORequest): void;
   getAll(): Category[];
   findByName(name: string): Category | undefined;
