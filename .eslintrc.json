@@ -21,6 +21,7 @@
         "prettier"
     ],
     "rules": {
+        "no-use-before-define": 0,
         "prettier/prettier": "warn",
         "camelcase": "off",
         "import/no-unresolved": "error",
