@@ -1,7 +1,7 @@
 version: "3.9"
 
 services: 
-  ignite_database:
+  database:
     image: postgres
     container_name: ignite_database
     restart: always
@@ -23,9 +23,9 @@ services:
     volumes:
       - .:/usr/app
     links:
-      - ignite_database
+      - database
     depends_on:
-      - ignite_database
+      - database
   
 
 volumes:
