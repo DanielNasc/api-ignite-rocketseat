@@ -1,8 +1,12 @@
-import { ICreateCategoriesRepository } from "../../repositories/ICategoriesRepository";
+import { inject, injectable } from "tsyringe";
 
+import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
+
+@injectable()
 export class ListCategoriesUseCase {
   constructor(
-    private readonly categoriesRepositoru: ICreateCategoriesRepository
+    @inject("CategoriesRepository")
+    private readonly categoriesRepositoru: ICategoriesRepository
   ) {}
 
   execute() {
