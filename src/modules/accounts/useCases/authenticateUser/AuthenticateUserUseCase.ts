@@ -12,7 +12,7 @@ interface IRequest {
 
 interface IResponse {
   user: {
-    username: string;
+    name: string;
     email: string;
   };
   token: string;
@@ -51,7 +51,7 @@ export class AuthenticateUserUseCase {
     const response: IResponse = {
       token,
       user: {
-        username: user.username,
+        name: user.name,
         email: user.email,
       },
     };

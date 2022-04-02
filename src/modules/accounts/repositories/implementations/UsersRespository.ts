@@ -17,19 +17,19 @@ export class UsersRepository implements IUsersRepository {
     driver_license,
     email,
     password,
-    username,
+    name,
     avatar,
   }: ICreateUserDTO): Promise<void> {
     if (await this.findByEmail(email)) {
       throw new AppError("Email already in use.", 400);
     }
-    if (await this.findByUsername(username))
-      throw new AppError("Username already in use.", 400);
+    if (await this.findByName(name))
+      throw new AppError("Name already in use.", 400);
 
     const hashedPassword = await hash(password, 8);
 
     const user = this.repostiory.create({
-      username,
+      name,
       email,
       password: hashedPassword,
       driver_license,
@@ -43,8 +43,8 @@ export class UsersRepository implements IUsersRepository {
     return user;
   }
 
-  async findByUsername(username: string): Promise<User | undefined> {
-    const user = await this.repostiory.findOne({ where: { username } });
+  async findByName(name: string): Promise<User | undefined> {
+    const user = await this.repostiory.findOne({ where: { name } });
     return user;
   }
 
