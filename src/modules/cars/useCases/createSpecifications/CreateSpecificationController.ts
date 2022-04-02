@@ -11,16 +11,10 @@ export class CreateSpecificationController {
       CreateSpecificationUseCase
     );
 
-    try {
-      await createSpecificationUseCase.execute({
-        name,
-        description,
-      });
-    } catch (err) {
-      return res.status(400).json({
-        message: err.message || "Unexpected error.",
-      });
-    }
+    await createSpecificationUseCase.execute({
+      name,
+      description,
+    });
 
     return res.status(201).send();
   }
