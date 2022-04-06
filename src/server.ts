@@ -1,6 +1,6 @@
 import "reflect-metadata";
 
-import express, { Response, Request } from "express";
+import express, { Response, Request, NextFunction } from "express";
 import "express-async-errors";
 import swaggerUi from "swagger-ui-express";
 
@@ -19,8 +19,8 @@ app.get("/", (_, res) => res.json({ message: "Hallo warudo" }));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(router);
 
-app.use((err: Error, _: Request, res: Response) => {
-  console.log("233243rf");
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+app.use((err: Error, _: Request, res: Response, next: NextFunction) => {
   if (err instanceof AppError)
     return res.status(err.statusCode).json({
       status: "error",
